@@ -1,0 +1,147 @@
+/* =========================
+   XYVO — Mobile‑first styles
+   ========================= */
+
+:root{
+  --bg:#0b0f14; --bg-alt:#0e141b; --card:#101720;
+  --muted:#98a2b3; --text:#ffffff; --accent:#39b6ff;
+  --ring:rgba(57,182,255,.35); --container:1120px;
+}
+
+@media (prefers-color-scheme: light){
+  :root{ --bg:#ffffff; --bg-alt:#f7fafc; --card:#ffffff; --text:#0b0f14; --muted:#4b5563; }
+}
+
+/* Base */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; text-size-adjust:100%}
+body{
+  margin:0; color:var(--text);
+  background:radial-gradient(1200px 800px at 80% -10%, rgba(57,182,255,.08), transparent 60%), var(--bg);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.6;
+}
+img{max-width:100%; display:block; height:auto}
+.container{max-width:var(--container); margin:0 auto; padding:0 16px}
+
+/* Header */
+.site-header{position:sticky; top:0; z-index:50; background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.2)); backdrop-filter:blur(8px); border-bottom:1px solid rgba(255,255,255,.06)}
+.header-inner{display:flex; align-items:center; justify-content:space-between; min-height:72px}
+.brand{display:inline-flex; align-items:center; gap:10px}
+
+/* Bigger top-left logo */
+.logo-full{height:72px; width:auto}
+
+.nav{display:none; gap:18px; align-items:center}
+.nav a{color:var(--text); text-decoration:none; opacity:.92; font-size:15px}
+.nav a:hover{opacity:1}
+.nav .cta{padding:9px 14px; background:var(--accent); color:#000; border-radius:12px; font-weight:800}
+
+/* Mobile nav */
+.nav-toggle{display:inline-flex; background:transparent; border:0; width:44px; height:44px; align-items:center; justify-content:center; color:var(--text)}
+.nav-toggle .bar{display:block; height:2px; background:var(--text); margin:6px 0; width:22px; border-radius:2px}
+@media (min-width: 960px){
+  .nav{display:flex}
+  .nav-toggle{display:none}
+}
+@media (max-width: 959px){
+  .nav{position:fixed; left:0; right:0; top:72px; background:var(--bg-alt); border-bottom:1px solid rgba(255,255,255,.08); padding:14px 16px; flex-direction:column}
+  .nav.open{display:flex}
+}
+
+/* Buttons */
+.btn{background:var(--accent); color:#000; padding:12px 18px; border-radius:12px; font-weight:800; text-decoration:none}
+.btn:hover{filter:brightness(1.05)}
+.btn-outline{background:transparent; border:1px solid rgba(255,255,255,.14); color:var(--text)}
+
+/* Hero (main pages) */
+.hero{padding:48px 0 32px}
+.hero-agency{padding:72px 0 44px; background:radial-gradient(780px 380px at 80% -10%, rgba(57,182,255,.10), transparent 60%)}
+.hero-row{display:grid; gap:16px}
+.hero-row > div:first-child{max-width:720px}
+.hero h1{margin:0; font-size:clamp(26px, 6vw, 48px); line-height:1.08}
+.lead{color:var(--muted); margin-top:10px; max-width:60ch}
+.hero-cta{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+.hero-highlights{display:flex; gap:10px; list-style:none; padding:0; margin:14px 0 0; color:var(--muted)}
+.hero-highlights li{padding:6px 10px; border:1px solid rgba(255,255,255,.12); border-radius:999px; background:rgba(255,255,255,.05)}
+
+/* Sections */
+.section{padding:44px 0}
+.section.alt{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0))}
+.section h2{margin:0 0 10px; font-size:clamp(20px, 3.5vw, 30px)}
+.section .sub{color:var(--muted); margin:4px 0 0}
+
+/* Grids & cards */
+.grid{display:grid; gap:14px; margin-top:14px}
+.cards-3{grid-template-columns:1fr}
+@media (min-width: 760px){ .cards-3{grid-template-columns:repeat(2, 1fr)} }
+@media (min-width: 1024px){ .cards-3{grid-template-columns:repeat(3, 1fr)} }
+.card{background:var(--card); border-radius:14px; padding:16px; border:1px solid rgba(255,255,255,.06)}
+.card h3{margin:0 0 6px}
+.card p{color:var(--muted)}
+.card.icon{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02))}
+.service-cards .card{transition:transform .2s ease, box-shadow .2s ease}
+.service-cards .card:hover{transform:translateY(-2px); box-shadow:0 14px 36px rgba(0,0,0,.24)}
+
+/* Skeleton shimmer */
+.skeleton{position:relative; overflow:hidden}
+.skeleton::after{content:""; position:absolute; inset:0; background:linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent); transform:translateX(-100%); animation:shimmer 1.2s infinite}
+@keyframes shimmer{100%{transform:translateX(100%)}}
+@media (prefers-reduced-motion: reduce){ .service-cards .card, .skeleton::after{animation:none} }
+
+/* Portfolio */
+.work-grid{grid-template-columns:1fr}
+@media (min-width: 760px){ .work-grid{grid-template-columns:repeat(2, 1fr)} }
+@media (min-width: 1100px){ .work-grid{grid-template-columns:repeat(3, 1fr)} }
+.case{position:relative; border-radius:14px; overflow:hidden; background:var(--card); text-decoration:none; color:inherit; border:1px solid rgba(255,255,255,.06)}
+.case-media{height:200px; background:#0a0f14}
+.case-info{position:absolute; inset:auto 0 0 0; padding:12px; background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.7))}
+.case::after{content:"View case"; position:absolute; inset:0; display:grid; place-items:center; color:#fff; background:rgba(0,0,0,.35); opacity:0; transition:opacity .2s}
+.case:focus-visible::after, .case:hover::after{opacity:1}
+
+/* Contact */
+.contact-grid{display:grid; grid-template-columns:1fr; gap:16px; align-items:start}
+@media (min-width: 960px){ .contact-grid{grid-template-columns:1fr 1fr} }
+.contact-list{list-style:none; margin:10px 0; padding:0; color:var(--muted)}
+.contact-form label{display:block; color:var(--muted); font-size:14px; margin-bottom:8px}
+.contact-form input, .contact-form textarea{
+  width:100%; padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.1);
+  background:rgba(0,0,0,.2); color:var(--text); outline:0;
+}
+.contact-form input:focus, .contact-form textarea:focus{box-shadow:0 0 0 4px var(--ring); border-color:var(--accent)}
+.form-actions{display:flex; gap:10px; justify-content:flex-end; margin-top:8px}
+
+/* Footer */
+.site-footer{border-top:1px solid rgba(255,255,255,.08); padding:16px 0; margin-top:36px}
+.footer-inner{display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:14px}
+.footer-brand{display:flex; align-items:center; gap:8px}
+.symbol.mini{width:26px; height:26px; opacity:.9; filter:grayscale(100%) brightness(1.5)}
+
+/* =========================
+   Start (splash) page only
+   ========================= */
+.splash{min-height:100svh; display:grid; place-items:center; padding:28px; background:#000}
+.splash-card{display:grid; gap:18px; justify-items:center; text-align:center; max-width:720px}
+.splash-logo{width:160px; height:auto; border-radius:12px}
+.splash-title{color:#fff; letter-spacing:.12em; font-weight:800; font-size:22px; opacity:.95}
+.splash-cta{display:flex; gap:12px; flex-wrap:wrap; justify-content:center}
+
+@media (min-width: 760px){
+  .splash{padding:40px}
+  .splash-card{gap:22px}
+  .splash-logo{width:220px}
+  .splash-title{font-size:26px; letter-spacing:.14em}
+}
+@media (min-width: 1200px){
+  .splash-logo{width:260px}
+  .splash-title{font-size:28px}
+}
+
+/* Optional glow for logo on large screens */
+@media (min-width: 960px){
+  .splash-card::before{
+    content:""; position:absolute; inset:auto; width:540px; height:540px; border-radius:50%;
+    background:radial-gradient(closest-side, rgba(57,182,255,.14), rgba(0,0,0,0));
+    filter:blur(18px); z-index:-1; transform:translateY(-20%);
+  }
+}

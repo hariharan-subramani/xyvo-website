@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work with us — XYVO</title>
+  <link rel="icon" href="assets/logo.jpg" />
+  <link rel="stylesheet" href="style.css?v=1" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/logo.jpg" alt="XYVO" class="logo-full" /></a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+      <nav class="nav" role="navigation">
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="work.html">Work</a>
+        <a href="contact.html" class="cta" aria-current="page">Work with us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <h1>Start a project</h1>
+          <p>Tell us goals, budget, and timeline. Replies within 24–48 hours.</p>
+          <ul class="contact-list">
+            <li><strong>Email</strong> hello@xyvo.co</li>
+            <li><strong>LinkedIn</strong> linkedin.com/company/xyvo</li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-form-id" method="POST" novalidate>
+          <label>Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>Message
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn">Send message</button>
+            <a class="btn btn-outline" href="mailto:hello@xyvo.co">Use email</a>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand"><img src="assets/Symbol.jpg" alt="" class="symbol mini" aria-hidden="true" /><span>© 2025 XYVO</span></div>
+      <div class="credits">Innovation • Vision • Outcomes</div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
